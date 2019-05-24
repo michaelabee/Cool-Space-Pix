@@ -23,3 +23,20 @@ h1{
 	padding:20px;
 	margin:20px auto;
 }
+
+.user-instructions {
+	color:white;
+	font-weight:bold;
+}
+
+#title {
+	text-align:center;
+}
+
+#music-holder{
+	background: black;
+	color: white;
+	width: 100%;
+	height: 40px;
+	text-align: center;
+}

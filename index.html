@@ -17,15 +17,19 @@
 <body>
 	<div class="container">
     <div class="row">
-      <h1>TITLE</h1>
+      <h1 id="title">TITLE</h1>
     </div>
 
     <div class="row">
         <div class="col s2"></div>
         <div class="col s8"> 
           <div>
-            <form>
+            <div class="user-instructions">
+              <p> To find awesome space pictures enter either a date OR a keyword below!</p>
+            </div>
+            <form class="search-form">
               <input id="search-date" type="search" placeholder="search for a date">
+              <h2> OR </h2>
               <input id="search-term" type="search" placeholder="search for something!">
             </form>
           </div>
@@ -34,6 +38,12 @@
         </div>
         <div class="col s2"></div>
       </div>
+
+    <div class="row">
+      <div id="music-holder">
+        <p> MUSIC PLAYER WILL GO HERE</p>
+      </div>
+    </div>
   </div>
   
 </body>

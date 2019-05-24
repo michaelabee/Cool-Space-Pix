@@ -6,9 +6,9 @@
 #011502
 */
 
-html{
-	background-color:#32746D;
-	color:#011502;
+html {
+	background-color:#000;
+	color:#fff;
 	font-family: 'Montserrat', sans-serif;
 }
 
@@ -17,16 +17,37 @@ h1{
 	font-weight:bold;
 }
 
+/* Adam G 5/23: From template
+
 .content{
 	background-color:#9EC5AB;
 	width:70%;
 	padding:20px;
 	margin:20px auto;
-}
+} */
 
 .user-instructions {
 	color:white;
 	font-weight:bold;
+}
+
+#mainContent {
+    position:relative;
+}
+
+#bgDiv {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;   
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    opacity: 0.15;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
 
 #title {

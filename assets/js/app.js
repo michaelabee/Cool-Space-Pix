@@ -28,9 +28,36 @@ var nasaImagesQuery = function () {
 	// TO DO: Define the below and set if statements so they'll only contain the operator and data to add to the URL, if the field has data
 
 	// The main function for the site
-	searchTerm = $('#search-term').val().trim();
-	yearStart = '1900'; // $('#search-date').val().trim();
-	yearEnd = '2900'; // $('#search-date').val().trim();
+	var getSearchTerm = function() {
+		if ($('#search-term') === '') {
+			// error!
+		} else {
+			searchTerm = $('#search-term').val().trim();
+		};
+	};
+
+	var getYearStart = function() {
+		if ($('#search-start-date') === '') {
+			yearStart = '1900';
+		} else {
+			yearStart = $('#search-start-date').val().trim();
+		};
+	};
+
+	var getYearEnd = function() {
+		if ($('#search-end-date') === '') {
+			yearEnd = '2199';
+		} else {
+			yearEnd = $('#search-end-date').val().trim();
+		};
+	};
+
+	getSearchTerm();
+	getYearStart();
+	getYearEnd();
+
+	console.log('Query values: ' + searchTerm + ', ' + yearStart + '-' + yearEnd);
+	
 	nasaQueryURL = 'https://images-api.nasa.gov/search?q=' + searchTerm + mediaType + '&year_start=' + yearStart + '&year_end=' + yearEnd
 	mediaType = function () {
 		if ($('#media-type') === '') {
@@ -39,8 +66,6 @@ var nasaImagesQuery = function () {
 			return '&media_type=' + $('#media-type').val().trim();
 		};
 	};
-
-	console.log(searchTerm + ', ' + yearStart + ', ' + yearEnd);
 
 	$.ajax({
 		url: nasaQueryURL,

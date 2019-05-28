@@ -16,7 +16,7 @@
 </head>
 
 <body>
-  <div id="bgDiv"></div>
+  <div id="bgDiv"></div> 
   <div id="mainContent">
     <div class="container">
       <nav class ="navbar">
@@ -30,9 +30,10 @@
   </nav>
 
       <div class="row">
+
         <div class="col s2"></div>
         <div class="col s8">
-          <div>
+          <div id="searchResults">
             <div class="user-instructions">
               <p> To find awesome space pictures enter either a date OR a keyword below!</p>
             </div>
@@ -44,17 +45,26 @@
               <h2> OR </h2>
               <input class="data-input" id="search-term" type="search" placeholder="Search for something!">
             </form>
-          </div>
+          
           <div class="search-box"></div>
           <button class="btn waves-effect waves-light" id="submit" onclick="nasaImagesQuery()" type="submit" name="action">Submit</button>
+          </div>
+          
+        <div class="carousel"></div>
+        
         </div>
         <div class="col s2"></div>
       </div>
 
       <div class="row">
-        <div id="music-holder">
+        <div class="col s2"></div>
+        <div class="col s8">
+        <footer id="music-holder">
           <p> MUSIC PLAYER WILL GO HERE</p>
+        </footer>
         </div>
+        <div class="col s2"></div>
+      </div>
       </div>
     </div>
   </div>

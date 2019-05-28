@@ -80,6 +80,7 @@ var nasaImagesQuery = function () {
 ///////////////// On page load ///////////////
 $(document).ready(function () {
 	nasaBg();
+	$('.carousel').carousel();
 });
 
 // $('#submit').unbind().click(function(){

@@ -84,8 +84,17 @@ var nasaImagesQuery = function () {
 		resultsArr = response.collection.items;
 		for (i = 0; i < resultsQty; i++) {
 			var resBox = $('<div>');
-			resBox.attr('class', 'resBox');
+			//not sure if adding the carousel here makes sense
+			resBox.attr('class', 'carousel');
+			var link = $('<a>');
+			link.attr({
+				'class': 'carousel-item', 
+				'href': '#'+ [i] + '!',
+			});
+
+
 			var resImg = $('<img>');
+		
 			resImg.attr({
 				'class': 'resImg',
 				src: resultsArr[i].links[0].href, // Just the thumbnail
@@ -97,9 +106,13 @@ var nasaImagesQuery = function () {
 			for (j = 0 ; j < 5 ; j++) {
 				console.log(resultsArr[i].href[j]);
 			}
-			$('#results').prepend(resBox);
-			resBox.append(resImg);
-			resBox.append(resultsArr[i].data[0].title);
+			// $('#results').prepend(resBox);
+			link.append(resImg);
+			console.log(link);
+			$("#carousel").append(link);
+			// resBox.append(resImg);
+			// resBox.append(resultsArr[i].data[0].title);
+			$('.carousel').carousel();
 		};
 	});
 };
@@ -109,7 +122,7 @@ var nasaImagesQuery = function () {
 ///////////////// On page load ///////////////
 $(document).ready(function () {
 	nasaBg();
-	$('.carousel').carousel();
+	
 });
 
 // $('#submit').unbind().click(function(){

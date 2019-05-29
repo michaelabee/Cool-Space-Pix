@@ -25,40 +25,59 @@ var nasaBg = function () {
 };
 
 var nasaImagesQuery = function () {
-	// TO DO: Define the below and set if statements so they'll only contain the operator and data to add to the URL, if the field has data
 
 	// The main function for the site
-	var getSearchTerm = function() {
-		if ($('#search-term') === '') {
-			// error!
+	var getSearchTerm = function () {
+		if ($('#search-term').val().trim() === '') {
+			searchTerm = ''
 		} else {
 			searchTerm = $('#search-term').val().trim();
 		};
 	};
 
-	var getYearStart = function() {
-		if ($('#search-start-date') === '') {
-			yearStart = '1900';
+	var getYearStart = function () {
+		if ($('#search-start-date').val().trim() === '') {
+			yearStart = '';
 		} else {
-			yearStart = $('#search-start-date').val().trim();
+			yearStart = '&year_start=' + $('#search-start-date').val().trim();
 		};
 	};
 
-	var getYearEnd = function() {
-		if ($('#search-end-date') === '') {
-			yearEnd = '2199';
+	var getYearEnd = function () {
+		if ($('#search-end-date').val().trim() === '') {
+			yearEnd = '';
 		} else {
-			yearEnd = $('#search-end-date').val().trim();
+			yearEnd = '&year_end=' + $('#search-end-date').val().trim();
 		};
 	};
+
+	var getResultsQty = function () {
+		if ($('#resultsQty').val().trim() === '') {
+			resultsQty = 10
+		} else {
+			resultsQty = $('#resultsQty').val().trim();
+		};
+	};
+
 
 	getSearchTerm();
 	getYearStart();
 	getYearEnd();
+	getResultsQty();
 
-	console.log('Query values: ' + searchTerm + ', ' + yearStart + '-' + yearEnd);
-	
-	nasaQueryURL = 'https://images-api.nasa.gov/search?q=' + searchTerm + mediaType + '&year_start=' + yearStart + '&year_end=' + yearEnd
+	if (searchTerm === '' && yearStart === '' && yearEnd === '') {
+		$('#errorMessage').show();
+		return;
+	} else{
+		$('#errorMessage').hide();
+	}
+
+	queryError();
+
+	console.log('Query values: ' + searchTerm + ', ' + yearStart + '-' + yearEnd + '; ' + resultsQty + ' results desired');
+
+	nasaQueryURL = 'https://images-api.nasa.gov/search?q=' + searchTerm + mediaType + yearStart + yearEnd;
+
 	mediaType = function () {
 		if ($('#media-type') === '') {
 			return ''
@@ -73,6 +92,32 @@ var nasaImagesQuery = function () {
 	}).then(function (response) {
 		console.log('====== IMG QUERY RESPONSE ======');
 		console.log(response);
+		resultsArr = response.collection.items;
+		for (i = 0; i < resultsQty; i++) {
+			var resBox = $('<div>');
+			resBox.attr('class', 'resBox');
+			var resImg = $('<img>');
+			resImg.attr({
+				'class': 'resImg',
+				src: resultsArr[i].links[0].href, // Just the thumbnail
+				// TO DO Also add an actual link to it for full size
+				'title': resultsArr[i].data[0].title,
+			});
+			// resBox.wrap('<a href=' + results.Arr[i].href + '></a>')
+
+			console.log(resultsArr[i].href);
+			console.log(resultsArr[i].href.length);
+			console.log(resultsArr[i].href.length);
+			// var myJSON = JSON.parse(resultsArr[i].href);
+			// console.log(myJSON);
+			// for (j = 0 ; j < 5 ; j++) {
+			// 	console.log(resultsArr[i].href[j]);
+			// }
+
+			$('#results').prepend(resBox);
+			resBox.append(resImg);
+			resBox.append(resultsArr[i].data[0].title);
+		};
 	});
 };
 

@@ -37,13 +37,14 @@
               <label for="search-end-date">End Year</label>
               <input class="data-input" id="search-term" type="search" placeholder="Search for something!">
               <label for="search-term">Keyword(s)</label>
-              <input class="data-input" id="resultsQty" type="number" value = "10">
+              <input class="data-input" id="resultsQty" type="number" value="10">
               <label for="search-term"># of Results (1-100)</label>
             </form>
           </div>
           <div class="search-box"></div>
           <button class="btn waves-effect waves-light" id="submit" onclick="nasaImagesQuery()" type="submit"
             name="action">Submit</button>
+          <div id="errorMessage" ><h3>Make sure to enter either a date span or search term before hitting submit!</h3></div>
         </div>
         <div class="col s2"></div>
       </div>

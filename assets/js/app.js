@@ -25,18 +25,17 @@ var nasaBg = function () {
 };
 
 var nasaImagesQuery = function () {
-	// TO DO: Define the below and set if statements so they'll only contain the operator and data to add to the URL, if the field has data
 
 	// The main function for the site
-	var getSearchTerm = function() {
+	var getSearchTerm = function () {
 		if ($('#search-term') === '') {
-			// error!
+			searchTerm = ''
 		} else {
 			searchTerm = $('#search-term').val().trim();
 		};
 	};
 
-	var getYearStart = function() {
+	var getYearStart = function () {
 		if ($('#search-start-date') === '') {
 			yearStart = '1900';
 		} else {
@@ -44,7 +43,7 @@ var nasaImagesQuery = function () {
 		};
 	};
 
-	var getYearEnd = function() {
+	var getYearEnd = function () {
 		if ($('#search-end-date') === '') {
 			yearEnd = '2199';
 		} else {
@@ -52,12 +51,21 @@ var nasaImagesQuery = function () {
 		};
 	};
 
+	var getResultsQty = function () {
+		if ($('#resultsQty') === '') {
+			resultsQty = 10
+		} else {
+			resultsQty = $('#resultsQty').val().trim();
+		};
+	};
+
 	getSearchTerm();
 	getYearStart();
 	getYearEnd();
+	getResultsQty();
 
-	console.log('Query values: ' + searchTerm + ', ' + yearStart + '-' + yearEnd);
-	
+	console.log('Query values: ' + searchTerm + ', ' + yearStart + '-' + yearEnd + '; ' + resultsQty + ' results desired');
+
 	nasaQueryURL = 'https://images-api.nasa.gov/search?q=' + searchTerm + mediaType + '&year_start=' + yearStart + '&year_end=' + yearEnd
 	mediaType = function () {
 		if ($('#media-type') === '') {
@@ -73,13 +81,48 @@ var nasaImagesQuery = function () {
 	}).then(function (response) {
 		console.log('====== IMG QUERY RESPONSE ======');
 		console.log(response);
+		resultsArr = response.collection.items;
+		for (i = 0; i < resultsQty; i++) {
+			var resBox = $('<div>');
+			//not sure if adding the carousel here makes sense
+			resBox.attr('class', 'carousel');
+			var link = $('<a>');
+			link.attr({
+				'class': 'carousel-item', 
+				'href': '#'+ [i] + '!',
+			});
+
+
+			var resImg = $('<img>');
+		
+			resImg.attr({
+				'class': 'resImg',
+				src: resultsArr[i].links[0].href, // Just the thumbnail
+				// Also add an actual link to it for full size
+				'title': resultsArr[i].data[0].title,
+			});
+			// resBox.wrap('<a href=' + results.Arr[i].href + '></a>')
+			console.log(resultsArr[i].href);
+			for (j = 0 ; j < 5 ; j++) {
+				console.log(resultsArr[i].href[j]);
+			}
+			// $('#results').prepend(resBox);
+			link.append(resImg);
+			console.log(link);
+			$("#carousel").append(link);
+			// resBox.append(resImg);
+			// resBox.append(resultsArr[i].data[0].title);
+			$('.carousel').carousel();
+		};
 	});
 };
+
 
 
 ///////////////// On page load ///////////////
 $(document).ready(function () {
 	nasaBg();
+	
 });
 
 // $('#submit').unbind().click(function(){

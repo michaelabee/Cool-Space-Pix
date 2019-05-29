@@ -24,41 +24,41 @@ var nasaBg = function () {
 	});
 };
 
+////////// QUERY FUNCTIONS TO COLLECT USER INPUT /////////////
+var getSearchTerm = function () {
+	if ($('#search-term').val().trim() === '') {
+		searchTerm = ''
+	} else {
+		searchTerm = $('#search-term').val().trim();
+	};
+};
+
+var getYearStart = function () {
+	if ($('#search-start-date').val().trim() === '') {
+		yearStart = '';
+	} else {
+		yearStart = '&year_start=' + $('#search-start-date').val().trim();
+	};
+};
+
+var getYearEnd = function () {
+	if ($('#search-end-date').val().trim() === '') {
+		yearEnd = '';
+	} else {
+		yearEnd = '&year_end=' + $('#search-end-date').val().trim();
+	};
+};
+
+var getResultsQty = function () {
+	if ($('#resultsQty').val().trim() === '') {
+		resultsQty = 10
+	} else {
+		resultsQty = $('#resultsQty').val().trim();
+	};
+};
+
+/////////// MAIN QUERY FUNCTION /////////////
 var nasaImagesQuery = function () {
-
-	// The main function for the site
-	var getSearchTerm = function () {
-		if ($('#search-term').val().trim() === '') {
-			searchTerm = ''
-		} else {
-			searchTerm = $('#search-term').val().trim();
-		};
-	};
-
-	var getYearStart = function () {
-		if ($('#search-start-date').val().trim() === '') {
-			yearStart = '';
-		} else {
-			yearStart = '&year_start=' + $('#search-start-date').val().trim();
-		};
-	};
-
-	var getYearEnd = function () {
-		if ($('#search-end-date').val().trim() === '') {
-			yearEnd = '';
-		} else {
-			yearEnd = '&year_end=' + $('#search-end-date').val().trim();
-		};
-	};
-
-	var getResultsQty = function () {
-		if ($('#resultsQty').val().trim() === '') {
-			resultsQty = 10
-		} else {
-			resultsQty = $('#resultsQty').val().trim();
-		};
-	};
-
 
 	getSearchTerm();
 	getYearStart();

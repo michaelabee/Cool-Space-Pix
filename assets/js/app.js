@@ -77,10 +77,67 @@ var nasaImagesQuery = function () {
 };
 
 
+
+
 ///////////////// On page load ///////////////
 $(document).ready(function () {
 	nasaBg();
 });
+
+var userId = "Ker Her";
+var spotifyId = "7lYSJe9bqzeYYmzqIhSESB";
+var playlistUrl = "https://api.spotify.com/v1/users/" + userId +"/playlists/"+ spotifyId +"";
+var token = "Bearer BQBjrnk2A1dCHVE3BFqWm6lGIOMVLcvJYIntD5nxL0OQASaA42dgaNA0KnAuhveDbvw_mBz4Bjd7SMhhfeGeNjVlWUZ-3Dm8KRJR8T9SKBhl-VZNZ_ALw60KfMCrtL9YTqmEIZmeHmnvebVZbmYw3Z2yI-1Ar-o";
+var client_id = "dd3e63a1c5c048f789e22cfd38d228e8";
+var secret_id ="8705f5b4d85b4cd0bd05ec6322a7782b";
+var redirect_uri = "https://michaelabee.github.io/Cool-Space-Pix/";
+var scopes = "playlist-read-private";
+var response_type = token;
+var spotifyUri = "spotify:user:123639550:playlist:7lYSJe9bqzeYYmzqIhSESB";
+
+
+$.ajax({
+	url:playlistUrl,
+	method:"GET",
+	headers: {
+		"Authorization" : token
+	},
+	success: function(response){
+	}
+})    
+
+window.onSpotifyWebPlaybackSDKReady = () => {
+
+	console.log("onSpotifyWebPlaybackSDKReady triggered" )
+const token = 'BQAqmIUvXtA_eiXcGNOQBKd8jNqaDEO05PMwd1M3-vRGV77A891Ov9k7ZS2AD8W6SL8NbG_PQVmBD-de45Dn--zVYf_PmH0Y63z0TfgzpYl5iWtWB1FM3E5X9X6O3yPCZ_hLv0z1-AUzNLjEsTAp7d9HQDQDk9e3P2WcnLVh';
+const player = new Spotify.Player({
+name: 'Web Playback SDK Quick Start Player',
+getOAuthToken: cb => { cb(token); }
+});
+
+// Error handling
+player.addListener('initialization_error', ({ message }) => { console.error(message); });
+player.addListener('authentication_error', ({ message }) => { console.error(message); });
+player.addListener('account_error', ({ message }) => { console.error(message); });
+player.addListener('playback_error', ({ message }) => { console.error(message); });
+
+// Playback status updates
+player.addListener('player_state_changed', state => { console.log(state); });
+
+// Ready
+player.addListener('ready', ({ device_id }) => {
+console.log('Ready with Device ID', device_id);
+});
+
+// Not Ready
+player.addListener('not_ready', ({ device_id }) => {
+console.log('Device ID has gone offline', device_id);
+});
+
+// Connect to the player!
+player.connect();
+
+}  
 
 // $('#submit').unbind().click(function(){
 // 	console.log('clicked!');

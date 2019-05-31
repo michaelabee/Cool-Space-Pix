@@ -74,8 +74,7 @@ var nasaImagesQuery = function () {
 
 	console.log('Query values: ' + searchTerm + ', ' + yearStart + '-' + yearEnd + '; ' + resultsQty + ' results desired');
 
-	nasaQueryURL = 'https://images-api.nasa.gov/search?q=' + searchTerm + mediaType + yearStart + yearEnd;
-
+	nasaQueryURL = 'https://images-api.nasa.gov/search?q=' + searchTerm + mediaType + '&year_start=' + yearStart + '&year_end=' + yearEnd
 	mediaType = function () {
 		if ($('#media-type') === '') {
 			return ''
@@ -109,13 +108,12 @@ var nasaImagesQuery = function () {
 				'class': 'materialboxed',
 
 				src: resultsArr[i].links[0].href, // Just the thumbnail
-				// TO DO Also add an actual link to it for full size
+				// Also add an actual link to it for full size
 				'title': resultsArr[i].data[0].title,
 				'data-caption': resultsArr[i].data[0].description,
 			});
 
 			// resBox.wrap('<a href=' + results.Arr[i].href + '></a>')
-
 			console.log(resultsArr[i].href);
 			console.log(resultsArr[i].href.length);
 
@@ -127,7 +125,6 @@ var nasaImagesQuery = function () {
 			$('.carousel').carousel({full_width:true});
 			$('.materialboxed').materialbox();
 			$('#searchQuery').hide();
-
 
 		};
 
@@ -141,6 +138,68 @@ $(document).ready(function () {
 	nasaBg();
 
 });
+
+// $('#submit').unbind().click(function(){
+// 	console.log('clicked!');
+// 	event.preventDefault();
+// 	nasaImagesQuery();
+// });
+
+///////////// SPOTIFY API //////////////
+var userId = "Ker Her";
+var spotifyId = "7lYSJe9bqzeYYmzqIhSESB";
+var playlistUrl = "https://api.spotify.com/v1/users/" + userId +"/playlists/"+ spotifyId +"";
+var token = "Bearer BQBU7pHW_4WDuNSzHu81AQQlShMYV86rWFoQs1wr3tFDBrmZhkz87H5xIX9_jdauwbjha3ofzL_2W1vLmctAVtgSnhNBmhD4r72VoUfQcnrz8IcYUPuL5JRHrnJMvpJX79Iak6MbdpP1iaUHHqzzZ_RIN2Bp6wg";
+var client_id = "dd3e63a1c5c048f789e22cfd38d228e8";
+var secret_id ="8705f5b4d85b4cd0bd05ec6322a7782b";
+var redirect_uri = "https://michaelabee.github.io/Cool-Space-Pix/";
+var scopes = "playlist-read-private";
+var response_type = token;
+var spotifyUri = "spotify:user:123639550:playlist:7lYSJe9bqzeYYmzqIhSESB";
+
+
+$.ajax({
+	url:playlistUrl,
+	method:"GET",
+	headers: {
+		"Authorization" : token
+	},
+	success: function(response){
+	}
+})    
+
+window.onSpotifyWebPlaybackSDKReady = () => {
+
+	console.log("onSpotifyWebPlaybackSDKReady triggered" )
+const token = 'BQCFk1inlUMM5TvatWBSMeSRvUbL1o8gpCcM_nTeA5j30fYSUAknsXd67xABxgc9LJWVnZTiVl9OjLbcSVNDP8_T6kpOZ510Y9iww4TknWUHpxdLao1PyrcOXLTuTkEswL9JZRDyymP38pRztKbshdwFFhxJFcHrh5ImWiwa';
+const player = new Spotify.Player({
+name: 'Web Playback SDK Quick Start Player',
+getOAuthToken: cb => { cb(token); }
+});
+
+// Error handling
+player.addListener('initialization_error', ({ message }) => { console.error(message); });
+player.addListener('authentication_error', ({ message }) => { console.error(message); });
+player.addListener('account_error', ({ message }) => { console.error(message); });
+player.addListener('playback_error', ({ message }) => { console.error(message); });
+
+// Playback status updates
+player.addListener('player_state_changed', state => { console.log(state); });
+
+// Ready
+player.addListener('ready', ({ device_id }) => {
+console.log('Ready with Device ID', device_id);
+});
+
+// Not Ready
+player.addListener('not_ready', ({ device_id }) => {
+console.log('Device ID has gone offline', device_id);
+});
+
+// Connect to the player!
+player.connect();
+
+}  
 
 // $('#submit').unbind().click(function(){
 // 	console.log('clicked!');

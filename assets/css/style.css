@@ -81,7 +81,8 @@ h1{
 #music-holder{
 	background:#0B0523;
 	color: white;
-	height: 40px;
+	width: 100%;
+	height: 250px;
 	text-align: center;
 	position:fixed;
 	bottom: 5px;

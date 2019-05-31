@@ -113,7 +113,7 @@ var nasaImagesQuery = function () {
 			// resBox.wrap('<a href=' + results.Arr[i].href + '></a>')
 
 			link.append(resImg);
-			console.log(link);
+			
 			$("#carousel").append(link);
 
 			// resBox.append(resImg);
@@ -135,6 +135,8 @@ var reset = function () {
 	$('#searchQuery').show();
 	$('.carousel').hide();
 	$('#search-again').hide();
+	$('data-caption').empty();
+	$('data-input').empty();
 };
 
 ////////////////////////////////////////
@@ -144,8 +146,8 @@ var reset = function () {
 $(document).ready(function () {
 	nasaBg();
 	$('#search-again').hide();
-});
 
+};
 
 ////////////////////////////////////////
 ///////////// SPOTIFY API //////////////

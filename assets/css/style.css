@@ -109,3 +109,7 @@ h1 {
 #search-term {
 	color: white;
 }
+
+#search-again {
+	position: absolute;
+}

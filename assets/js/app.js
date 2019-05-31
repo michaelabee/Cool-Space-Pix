@@ -72,8 +72,6 @@ var nasaImagesQuery = function () {
 		$('#errorMessage').hide();
 	}
 
-	queryError();
-
 	console.log('Query values: ' + searchTerm + ', ' + yearStart + '-' + yearEnd + '; ' + resultsQty + ' results desired');
 
 	nasaQueryURL = 'https://images-api.nasa.gov/search?q=' + searchTerm + mediaType + yearStart + yearEnd;

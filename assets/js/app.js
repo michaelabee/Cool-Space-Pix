@@ -82,7 +82,7 @@ var nasaImagesQuery = function () {
 			return '&media_type=' + $('#media-type').val().trim();
 		};
 	};
-
+	
 	$.ajax({
 		url: nasaQueryURL,
 		method: "GET"
@@ -99,7 +99,6 @@ var nasaImagesQuery = function () {
 				'class': 'carousel-item',
 				'href': '#'+ [i] + '!',
 			});
-
 
 			var resImg = $('<img>');
 
@@ -120,16 +119,28 @@ var nasaImagesQuery = function () {
 			link.append(resImg);
 			console.log(link);
 			$("#carousel").append(link);
+			
 			// resBox.append(resImg);
 			// resBox.append(resultsArr[i].data[0].title);
 			$('.carousel').carousel({full_width:true});
 			$('.materialboxed').materialbox();
 			$('#searchQuery').hide();
+			$('#search-again').show();
 
 		};
-
+		
 	});
+
 };
+
+
+var reset = function (){
+	$('#searchQuery').show();
+	$('.carousel').remove();
+	$('#search-again').hide();
+
+};
+
 
 
 

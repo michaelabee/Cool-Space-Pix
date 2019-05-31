@@ -135,10 +135,9 @@ var reset = function (){
 	$('#searchQuery').show();
 	$('.carousel').remove();
 	$('#search-again').hide();
-
+	$('data-caption').empty();
+	$('data-input').empty();
 };
-
-
 
 
 ///////////////// On page load ///////////////

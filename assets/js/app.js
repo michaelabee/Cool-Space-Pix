@@ -95,14 +95,27 @@ var nasaImagesQuery = function () {
 		resultsArr = response.collection.items;
 		for (i = 0; i < resultsQty; i++) {
 			var resBox = $('<div>');
-			resBox.attr('class', 'resBox');
+			
+			resBox.attr('class', 'carousel');
+			var link = $('<a>');
+			link.attr({
+				'class': 'carousel-item', 
+				'href': '#'+ [i] + '!',
+			});
+
+
 			var resImg = $('<img>');
+		
 			resImg.attr({
 				'class': 'resImg',
+				'class': 'materialboxed',
+								
 				src: resultsArr[i].links[0].href, // Just the thumbnail
 				// TO DO Also add an actual link to it for full size
 				'title': resultsArr[i].data[0].title,
+				'data-caption': resultsArr[i].data[0].description,
 			});
+		
 			// resBox.wrap('<a href=' + results.Arr[i].href + '></a>')
 
 			console.log(resultsArr[i].href);
@@ -117,7 +130,22 @@ var nasaImagesQuery = function () {
 			$('#results').prepend(resBox);
 			resBox.append(resImg);
 			resBox.append(resultsArr[i].data[0].title);
+			for (j = 0 ; j < 5 ; j++) {
+				console.log(resultsArr[i].href[j]);
+			}
+			// $('#results').prepend(resBox);
+			link.append(resImg);
+			console.log(link);
+			$("#carousel").append(link);
+			// resBox.append(resImg);
+			// resBox.append(resultsArr[i].data[0].title);
+			$('.carousel').carousel({full_width:true});
+			$('.materialboxed').materialbox();
+			$('#searchQuery').hide();
+
+			
 		};
+
 	});
 };
 
@@ -127,6 +155,7 @@ var nasaImagesQuery = function () {
 ///////////////// On page load ///////////////
 $(document).ready(function () {
 	nasaBg();
+	
 });
 
 var userId = "Ker Her";

@@ -65,7 +65,7 @@ var getResultsQty = function () {
 //////////////////////////////////////////////////
 
 var nasaImagesQuery = function () {
-	$('.carousel').show();
+
 	getSearchTerm();
 	getYearStart();
 	getYearEnd();
@@ -125,6 +125,7 @@ var nasaImagesQuery = function () {
 			$('#searchQuery').hide();
 			$('#search-again').show();
 		};
+		$('.carousel').show();
 	});
 };
 

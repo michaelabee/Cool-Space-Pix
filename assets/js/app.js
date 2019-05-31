@@ -132,7 +132,7 @@ $(document).ready(function () {
 var userId = "Ker Her";
 var spotifyId = "7lYSJe9bqzeYYmzqIhSESB";
 var playlistUrl = "https://api.spotify.com/v1/users/" + userId +"/playlists/"+ spotifyId +"";
-var token = "Bearer BQBjrnk2A1dCHVE3BFqWm6lGIOMVLcvJYIntD5nxL0OQASaA42dgaNA0KnAuhveDbvw_mBz4Bjd7SMhhfeGeNjVlWUZ-3Dm8KRJR8T9SKBhl-VZNZ_ALw60KfMCrtL9YTqmEIZmeHmnvebVZbmYw3Z2yI-1Ar-o";
+var token = "Bearer BQBsgQ7bkTwBCy3YeZvN5z_d5DSJaUKFzUNgD6bPYmziD12RjJrEJ_WR24GO29Fwysf7USgS6vFssKXXwMQbXI_63QZVZgLT3-MQeL_9YY8t5MNJAh-f1q6g_o50EapUZA6CyvvY0K1XkTKBWrAt7E7TAkmMoEQ";
 var client_id = "dd3e63a1c5c048f789e22cfd38d228e8";
 var secret_id ="8705f5b4d85b4cd0bd05ec6322a7782b";
 var redirect_uri = "https://michaelabee.github.io/Cool-Space-Pix/";

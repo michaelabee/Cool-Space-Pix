@@ -109,3 +109,12 @@ h1{
 .carousel {
 	min-height: 500px;
 }
+.input-field input[type=text]:focus {
+	border-bottom: 1px solid #180c47;
+	box-shadow: 0 1px 0 0 #000;
+  }
+
+  #search-again {
+	  text-align: center;
+	  
+  }

@@ -113,3 +113,10 @@ h1 {
 #search-again {
 	position: absolute;
 }
+
+#video-holder {
+	text-align:center;
+	padding:1px;
+	margin-top:50px;
+
+}

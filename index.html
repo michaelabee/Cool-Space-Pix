@@ -49,9 +49,11 @@
                 <label for="search-term"># of Results (1-100)</label>
               </form>
               <div class="search-box"></div>
+
               <div id="errorMessage" hidden>
                 <h3>Make sure to enter either a date span or search term before hitting submit!</h3>
               </div>
+
               <button class="btn waves-effect waves-light" id="submit" onclick="nasaImagesQuery()" type="submit"
                 name="action">Submit</button>
             </div>
@@ -68,27 +70,24 @@
       <div class="row">
           <div class="col s2"></div>
           <div class="col s8">
-          <div class="center-align" id="search-again-holder" >
+            <div class="center-align" id="search-again-holder" >
               <button class="btn waves-effect waves-light" id="search-again" onclick="reset()" type="submit" name="action">Search Again</button>
           </div>
-          <div class="carousel" id="carousel">
           </div>
-        </div>
+          </div>
+
       <div class="row">
         <div class="col s2"></div>
         <div class="col s8">
-        <footer id="music-holder">      
-        </footer>
-        <div class="row">
-          <div class="col s12">
-            <div id="search-again-holder" class="center-align">
-              <button class="btn waves-effect waves-light" id="search-again" onclick="reset()" type="submit"
-                name="action">Search Again</button>
+        <footer id="music-holder"> </footer>
+
             </div>
           </div>
         </div>
       </div>
     </div>
+
+
   </body>
 
   </html>

@@ -93,7 +93,7 @@ var nasaImagesQuery = function () {
 		resultsArr = response.collection.items;
 		for (i = 0; i < resultsQty; i++) {
 			var resBox = $('<div>');
-			//not sure if adding the carousel here makes sense
+
 			resBox.attr('class', 'carousel');
 			var link = $('<a>');
 			link.attr({
@@ -106,10 +106,14 @@ var nasaImagesQuery = function () {
 
 			resImg.attr({
 				'class': 'resImg',
+				'class': 'materialboxed',
+
 				src: resultsArr[i].links[0].href, // Just the thumbnail
 				// TO DO Also add an actual link to it for full size
 				'title': resultsArr[i].data[0].title,
+				'data-caption': resultsArr[i].data[0].description,
 			});
+
 			// resBox.wrap('<a href=' + results.Arr[i].href + '></a>')
 
 			console.log(resultsArr[i].href);
@@ -118,8 +122,15 @@ var nasaImagesQuery = function () {
 			link.append(resImg);
 			console.log(link);
 			$("#carousel").append(link);
-			$('.carousel').carousel();
+			// resBox.append(resImg);
+			// resBox.append(resultsArr[i].data[0].title);
+			$('.carousel').carousel({full_width:true});
+			$('.materialboxed').materialbox();
+			$('#searchQuery').hide();
+
+
 		};
+
 	});
 };
 

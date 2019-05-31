@@ -133,12 +133,12 @@ var nasaImagesQuery = function () {
 			for (j = 0 ; j < 5 ; j++) {
 				console.log(resultsArr[i].href[j]);
 			}
-			// $('#results').prepend(resBox);
+			$('#results').prepend(resBox);
 			link.append(resImg);
 			console.log(link);
 			$("#carousel").append(link);
-			// resBox.append(resImg);
-			// resBox.append(resultsArr[i].data[0].title);
+			resBox.append(resImg);
+			resBox.append(resultsArr[i].data[0].title);
 			$('.carousel').carousel({full_width:true});
 			$('.materialboxed').materialbox();
 			$('#searchQuery').hide();

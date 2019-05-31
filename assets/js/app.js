@@ -98,7 +98,7 @@ var nasaImagesQuery = function () {
 				'class': 'resImg',
 				'class': 'materialboxed',
 								
-				src: resultsArr[i].links[0].href, // Just the thumbnail
+				'src': resultsArr[i].links[0].href, // Just the thumbnail
 				// Also add an actual link to it for full size
 				'title': resultsArr[i].data[0].title,
 				'data-caption': resultsArr[i].data[0].description,
@@ -113,7 +113,7 @@ var nasaImagesQuery = function () {
 			}
 			// $('#results').prepend(resBox);
 			link.append(resImg);
-			console.log(link);
+			
 			$("#carousel").append(link);
 			
 			// resBox.append(resImg);
@@ -139,10 +139,12 @@ var reset = function (){
 	$('data-input').empty();
 };
 
+console.log('hey adam heheh');
 
 ///////////////// On page load ///////////////
 $(document).ready(function () {
 	nasaBg();
+	
 	
 });
 

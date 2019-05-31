@@ -108,7 +108,8 @@ var nasaImagesQuery = function () {
 				'class': 'resImg',
 				'class': 'materialboxed',
 
-				src: resultsArr[i].links[0].href,
+				src: resultsArr[i].links[0].href, // Just the thumbnail
+				// TO DO Also add an actual link to it for full size
 				'title': resultsArr[i].data[0].title,
 				'data-caption': resultsArr[i].data[0].description,
 			});

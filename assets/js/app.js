@@ -28,7 +28,7 @@ var nasaImagesQuery = function () {
 
 	// The main function for the site
 	var getSearchTerm = function () {
-		if ($('#search-term').val().trim() === '') {
+		if ($('#search-term') === '') {
 			searchTerm = ''
 		} else {
 			searchTerm = $('#search-term').val().trim();
@@ -36,46 +36,37 @@ var nasaImagesQuery = function () {
 	};
 
 	var getYearStart = function () {
-		if ($('#search-start-date').val().trim() === '') {
-			yearStart = '';
+		if ($('#search-start-date') === '') {
+			yearStart = '1900';
 		} else {
-			yearStart = '&year_start=' + $('#search-start-date').val().trim();
+			yearStart = $('#search-start-date').val().trim();
 		};
 	};
 
 	var getYearEnd = function () {
-		if ($('#search-end-date').val().trim() === '') {
-			yearEnd = '';
+		if ($('#search-end-date') === '') {
+			yearEnd = '2199';
 		} else {
-			yearEnd = '&year_end=' + $('#search-end-date').val().trim();
+			yearEnd = $('#search-end-date').val().trim();
 		};
 	};
 
 	var getResultsQty = function () {
-		if ($('#resultsQty').val().trim() === '') {
+		if ($('#resultsQty') === '') {
 			resultsQty = 10
 		} else {
 			resultsQty = $('#resultsQty').val().trim();
 		};
 	};
 
-
 	getSearchTerm();
 	getYearStart();
 	getYearEnd();
 	getResultsQty();
 
-	if (searchTerm === '' && yearStart === '' && yearEnd === '') {
-		$('#errorMessage').show();
-		return;
-	} else{
-		$('#errorMessage').hide();
-	}
-
 	console.log('Query values: ' + searchTerm + ', ' + yearStart + '-' + yearEnd + '; ' + resultsQty + ' results desired');
 
-	nasaQueryURL = 'https://images-api.nasa.gov/search?q=' + searchTerm + mediaType + yearStart + yearEnd;
-
+	nasaQueryURL = 'https://images-api.nasa.gov/search?q=' + searchTerm + mediaType + '&year_start=' + yearStart + '&year_end=' + yearEnd
 	mediaType = function () {
 		if ($('#media-type') === '') {
 			return ''
@@ -109,34 +100,22 @@ var nasaImagesQuery = function () {
 				'class': 'materialboxed',
 								
 				src: resultsArr[i].links[0].href, // Just the thumbnail
-				// TO DO Also add an actual link to it for full size
+				// Also add an actual link to it for full size
 				'title': resultsArr[i].data[0].title,
 				'data-caption': resultsArr[i].data[0].description,
 			});
 		
 			// resBox.wrap('<a href=' + results.Arr[i].href + '></a>')
-
 			console.log(resultsArr[i].href);
-			console.log(resultsArr[i].href.length);
-			console.log(resultsArr[i].href.length);
-			// var myJSON = JSON.parse(resultsArr[i].href);
-			// console.log(myJSON);
-			// for (j = 0 ; j < 5 ; j++) {
-			// 	console.log(resultsArr[i].href[j]);
-			// }
-
-			$('#results').prepend(resBox);
-			resBox.append(resImg);
-			resBox.append(resultsArr[i].data[0].title);
 			for (j = 0 ; j < 5 ; j++) {
 				console.log(resultsArr[i].href[j]);
 			}
-			$('#results').prepend(resBox);
+			// $('#results').prepend(resBox);
 			link.append(resImg);
 			console.log(link);
 			$("#carousel").append(link);
-			resBox.append(resImg);
-			resBox.append(resultsArr[i].data[0].title);
+			// resBox.append(resImg);
+			// resBox.append(resultsArr[i].data[0].title);
 			$('.carousel').carousel({full_width:true});
 			$('.materialboxed').materialbox();
 			$('#searchQuery').hide();
@@ -149,17 +128,21 @@ var nasaImagesQuery = function () {
 
 
 
-
 ///////////////// On page load ///////////////
 $(document).ready(function () {
 	nasaBg();
 	
 });
 
+// $('#submit').unbind().click(function(){
+// 	console.log('clicked!');
+// 	event.preventDefault();
+// 	nasaImagesQuery();
+// });
 var userId = "Ker Her";
 var spotifyId = "7lYSJe9bqzeYYmzqIhSESB";
 var playlistUrl = "https://api.spotify.com/v1/users/" + userId +"/playlists/"+ spotifyId +"";
-var token = "Bearer BQBsgQ7bkTwBCy3YeZvN5z_d5DSJaUKFzUNgD6bPYmziD12RjJrEJ_WR24GO29Fwysf7USgS6vFssKXXwMQbXI_63QZVZgLT3-MQeL_9YY8t5MNJAh-f1q6g_o50EapUZA6CyvvY0K1XkTKBWrAt7E7TAkmMoEQ";
+var token = "Bearer BQBU7pHW_4WDuNSzHu81AQQlShMYV86rWFoQs1wr3tFDBrmZhkz87H5xIX9_jdauwbjha3ofzL_2W1vLmctAVtgSnhNBmhD4r72VoUfQcnrz8IcYUPuL5JRHrnJMvpJX79Iak6MbdpP1iaUHHqzzZ_RIN2Bp6wg";
 var client_id = "dd3e63a1c5c048f789e22cfd38d228e8";
 var secret_id ="8705f5b4d85b4cd0bd05ec6322a7782b";
 var redirect_uri = "https://michaelabee.github.io/Cool-Space-Pix/";
@@ -181,7 +164,7 @@ $.ajax({
 window.onSpotifyWebPlaybackSDKReady = () => {
 
 	console.log("onSpotifyWebPlaybackSDKReady triggered" )
-const token = 'BQAqmIUvXtA_eiXcGNOQBKd8jNqaDEO05PMwd1M3-vRGV77A891Ov9k7ZS2AD8W6SL8NbG_PQVmBD-de45Dn--zVYf_PmH0Y63z0TfgzpYl5iWtWB1FM3E5X9X6O3yPCZ_hLv0z1-AUzNLjEsTAp7d9HQDQDk9e3P2WcnLVh';
+const token = 'BQCFk1inlUMM5TvatWBSMeSRvUbL1o8gpCcM_nTeA5j30fYSUAknsXd67xABxgc9LJWVnZTiVl9OjLbcSVNDP8_T6kpOZ510Y9iww4TknWUHpxdLao1PyrcOXLTuTkEswL9JZRDyymP38pRztKbshdwFFhxJFcHrh5ImWiwa';
 const player = new Spotify.Player({
 name: 'Web Playback SDK Quick Start Player',
 getOAuthToken: cb => { cb(token); }

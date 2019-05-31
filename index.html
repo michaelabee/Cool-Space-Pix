@@ -2,57 +2,59 @@
 
 <html>
 
-<head>
-  <title>Cool Space Pics</title>
+  <head>
+    <title>Cool Space Pics</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="assets/css/reset.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="assets/js/app.js"></script>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 
-</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  </head>
 
-<body>
-  <div id="bgDiv"></div> 
-  <div id="mainContent">
-    <div class="container">
-      <nav class ="navbar">
-    <div class="nav-wrapper">
-      <a href="#" id="title">E l l i p s e </a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li> ISS Livestream </li>
-        <!-- the above link won't work until we add an HREF to a new html file -->
-      </ul>
-    </div>
-  </nav>
+  <body>
+    <div id="bgDiv"></div>
+    <div id="mainContent">
+      <div class="container">
+        <nav class="navbar">
+          <div class="nav-wrapper">
+            <a href="#" id="title">E l l i p s e </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li> ISS Livestream </li>
+              <!-- the above link won't work until we add an HREF to a new html file -->
+            </ul>
+          </div>
+        </nav>
 
-      <div class="row">
-
-        <div class="col s2"></div>
-        <div class="col s8">
-          <div id="searchQuery">
-            <div class="user-instructions">
-              <p> To find awesome space pictures enter either a date OR a keyword below!</p>
+        <div class="row">
+          <div class="col s12">
+            <div id="searchQuery">
+              <div class="user-instructions">
+                <p> To find awesome space pictures enter either a date OR a keyword below!</p>
+              </div>
+              <form class="search-form">
+                <input class="data-input" id="search-start-date" type="number" value="2001">
+                <label for="search-start-date">Start Year</label>
+                <input class="data-input" id="search-end-date" type="number" value="2019">
+                <label for="search-end-date">End Year</label>
+                <input class="data-input" id="search-term" type="search" placeholder="Search for something!">
+                <label for="search-term">Keyword(s)</label>
+                <input class="data-input" id="resultsQty" type="number" value="10">
+                <label for="search-term"># of Results (1-100)</label>
+              </form>
+              <div class="search-box"></div>
+              <div id="errorMessage" hidden>
+                <h3>Make sure to enter either a date span or search term before hitting submit!</h3>
+              </div>
+              <button class="btn waves-effect waves-light" id="submit" onclick="nasaImagesQuery()" type="submit"
+                name="action">Submit</button>
             </div>
-            <form class="search-form">
-              <input class="data-input" id="search-start-date" type="number" value="2001">
-              <label for="search-start-date">Start Year</label>
-              <input class="data-input" id="search-end-date" type="number" value="2019">
-              <label for="search-end-date">End Year</label>
-              <input class="data-input" id="search-term" type="search" placeholder="Search for something!">
-              <label for="search-term">Keyword(s)</label>
-              <input class="data-input" id="resultsQty" type="number" value = "10">
-              <label for="search-term"># of Results (1-100)</label>
-            </form>
-          
-          <div class="search-box"></div>
-          <button class="btn waves-effect waves-light" id="submit" onclick="nasaImagesQuery()" type="submit" name="action">Submit</button>
           </div>
 
           <!-- search result images go here -->
@@ -69,22 +71,24 @@
           <div class="center-align" id="search-again-holder" >
               <button class="btn waves-effect waves-light" id="search-again" onclick="reset()" type="submit" name="action">Search Again</button>
           </div>
+          <div class="carousel" id="carousel">
           </div>
-          <div class="col s2"></div>
         </div>
       <div class="row">
         <div class="col s2"></div>
         <div class="col s8">
         <footer id="music-holder">      
         </footer>
+        <div class="row">
+          <div class="col s12">
+            <div id="search-again-holder" class="center-align">
+              <button class="btn waves-effect waves-light" id="search-again" onclick="reset()" type="submit"
+                name="action">Search Again</button>
+            </div>
+          </div>
         </div>
-        <div class="col s2"></div>
-      </div>
       </div>
     </div>
-  </div>
+  </body>
 
-
-</body>
-
-</html>
+  </html>

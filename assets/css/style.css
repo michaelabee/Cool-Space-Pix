@@ -68,6 +68,7 @@ h1 {
 	height: 90px;
 	z-index: 1000;
 	-webkit-font-smoothing: antialiased;
+	opacity: 100%;
  }
 
 .input-field input[type=text]:focus {
@@ -130,5 +131,4 @@ h1 {
 	text-align:center;
 	padding:1px;
 	margin-top:50px;
-
 }

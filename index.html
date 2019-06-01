@@ -30,6 +30,10 @@
 
   <!-- Spotify API JS -->
   <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  
+  <!-- Add a favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.ico">
+
 </head>
 
 <body>
@@ -42,8 +46,11 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <a href="assets/iss.html">ISS Livestream</a>
         </ul>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <ul id="bglink" class="right hide-on-med-and-down">
           <a href="https://apod.nasa.gov" target='_blank'>Like the background image?</a>
+        </ul>
+        <ul id="search-again" class="right hide-on-med-and-down">
+          <a href="#" onclick='reset()'>New search</a>
         </ul>
       </div>
     </nav>
@@ -77,14 +84,14 @@
       </div>
 
       <!-- Search reset button -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="col s12">
           <div class="center-align" id="search-again-holder">
             <button class="btn waves-effect waves-light" id="search-again" onclick="reset()" type="submit"
               name="action">Search Again</button>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Search result images go here -->
       <div class="row">

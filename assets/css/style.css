@@ -50,8 +50,11 @@ h1 {
 }
 
 .carousel {
-	/* min-height: 500px; */
+	min-height: 1000px;
 	z-index: 5;
+	position: relative;
+	bottom: 400px;
+	right: 100px;
 }
 
 .footer {

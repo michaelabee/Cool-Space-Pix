@@ -146,7 +146,6 @@ var reset = function () {
 $(document).ready(function () {
 	nasaBg();
 	$('#search-again').hide();
-
 });
 
 ////////////////////////////////////////

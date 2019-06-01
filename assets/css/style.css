@@ -92,7 +92,7 @@ h1 {
 	background: #0B0523;
 	color: white;
 	width: 100%;
-	height: 50px;
+	height: 25px;
 	text-align: center;
 	position: fixed;
 	bottom: 5px;
@@ -118,4 +118,20 @@ h1 {
 	padding:1px;
 	margin-top:50px;
 
+}
+
+.materialbox-caption {
+    position: fixed;
+    display: none;
+	color: #fff;
+	background-color: #0B0523;
+    line-height: 25px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: -1% 15%;
+    height: 90px;
+    z-index: 1000;
+    -webkit-font-smoothing: antialiased;
 }

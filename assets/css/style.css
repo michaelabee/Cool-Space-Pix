@@ -59,7 +59,24 @@ h1 {
 
 .footer {
 	z-index: 10;
+	height:25px;
 }
+
+.materialbox-caption {
+	position: fixed;
+	display: none;
+	 color: #fff;
+	 background-color: #0B0523;
+	line-height: 25px;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	padding: -1% 15%;
+	height: 90px;
+	z-index: 1000;
+	-webkit-font-smoothing: antialiased;
+ }
 
 .input-field input[type=text]:focus {
 	border-bottom: 1px solid #180c47;

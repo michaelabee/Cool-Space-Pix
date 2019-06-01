@@ -31,13 +31,6 @@ h1 {
 	margin: 20px 0;
 }
 
-.resBox {
-	display: inline-block;
-	margin-right: 8px;
-	max-width: 22%;
-	max-height: 200px;
-}
-
 .navbar {
 	padding: 1px;
 	background: #0B0523;
@@ -52,9 +45,38 @@ h1 {
 	background-color: #180c47;
 }
 
-.carousel {
-	min-height: 500px;
+.btn:focus  {
+	background-color: #180c47;
 }
+
+.carousel {
+	min-height: 700px;
+	z-index: 5;
+	position: relative;
+	bottom: 200px;
+	right: 100px;
+}
+
+.footer {
+	z-index: 10;
+	height:25px;
+}
+
+.materialbox-caption {
+	position: fixed;
+	display: none;
+	 color: #fff;
+	 background-color: #0B0523;
+	line-height: 25px;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	padding: -1% 15%;
+	height: 90px;
+	z-index: 1000;
+	-webkit-font-smoothing: antialiased;
+ }
 
 .input-field input[type=text]:focus {
 	border-bottom: 1px solid #180c47;
@@ -67,6 +89,8 @@ h1 {
 
 #title {
 	font-weight: bold;
+	font-size: 2rem;
+	padding-left: 20px
 }
 
 #bgDiv {
@@ -86,6 +110,7 @@ h1 {
 
 #search-again {
 	text-align: center;
+	z-index: 20;
 }
 
 #music-holder {
@@ -109,29 +134,9 @@ h1 {
 	color: white;
 }
 
-#search-again {
-	position: absolute;
-}
-
 #video-holder {
 	text-align:center;
 	padding:1px;
 	margin-top:50px;
 
-}
-
-.materialbox-caption {
-    position: fixed;
-    display: none;
-	color: #fff;
-	background-color: #0B0523;
-    line-height: 25px;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    padding: -1% 15%;
-    height: 90px;
-    z-index: 1000;
-    -webkit-font-smoothing: antialiased;
 }

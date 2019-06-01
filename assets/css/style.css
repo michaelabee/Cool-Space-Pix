@@ -27,6 +27,7 @@ h1 {
 	padding: 1px;
 	background: #0B0523;
 	margin-top: 5px;
+	z-index:10;
 }
 
 .btn {
@@ -39,14 +40,6 @@ h1 {
 
 .btn:focus  {
 	background-color: #180c47;
-}
-
-.carousel {
-	min-height: 700px;
-	z-index: 5;
-	position: relative;
-	bottom: 200px;
-	right: 100px;
 }
 
 .footer {
@@ -83,7 +76,8 @@ h1 {
 #title {
 	font-weight: bold;
 	font-size: 2rem;
-	padding-left: 20px
+	padding-left: 20px;
+	z-index:10;
 }
 
 #bgDiv {
@@ -98,7 +92,7 @@ h1 {
 	background-size: 100% auto;
 	padding: 0;
 	margin: 0;
-	z-index: 0;
+	z-index: -200;
 }
 
 #search-again {

@@ -45,6 +45,10 @@ h1 {
 	background-color: #180c47;
 }
 
+.btn:focus  {
+	background-color: #180c47;
+}
+
 .carousel {
 	/* min-height: 500px; */
 	z-index: 5;

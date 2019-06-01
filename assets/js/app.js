@@ -37,7 +37,7 @@ var getSearchTerm = function () {
 	};
 };
 
-// Start year
+// Start year; if the form is empy then return no portion of the parameter
 var getYearStart = function () {
 	if ($('#search-start-date').val().trim() === '') {
 		yearStart = '';
@@ -46,7 +46,7 @@ var getYearStart = function () {
 	};
 };
 
-// End year
+// End year; same behavior as the start year
 var getYearEnd = function () {
 	if ($('#search-end-date').val().trim() === '') {
 		yearEnd = '';
@@ -123,23 +123,24 @@ var nasaImagesQuery = function () {
 				full_width: true
 			});
 			$('.materialboxed').materialbox(); // Applying method to the resImg image tags; needed for the click-and-zoom capability of the pictures.
-			$('#searchQuery').hide();
-			$('#search-again').show();
-			$('.carousel').show();
+			$('#searchQuery').hide(); // Hiding the query form while the results are showing
+			$('#search-again').show(); // And showing the search reset button
+			$('.carousel').show(); // Showing the carousel results
 		};
-		
 	});
 };
 
+///////////////////////////////////////////////
 ////////// RESET PAGE FOR NEW SEARCH //////////
+///////////////////////////////////////////////
 
 var reset = function () {
-	$('#searchQuery').show();
-	$('.carousel').hide();
-	$('#search-again').hide();
-	$('data-caption').empty();
-	$('data-input').empty();
-	$('.carousel').empty();
+	$('#searchQuery').show(); // Re-show the search query
+	$('.carousel').empty(); // Empty carousel
+	$('.carousel').hide(); // Hide carousel
+	$('#search-again').hide(); // Hide the search again button
+	$('data-caption').empty(); // Emptying the caption from carousel images
+	$('.data-input').attr('value',''); // Emptying the form's search criteria
 };
 
 ////////////////////////////////////////
@@ -149,6 +150,7 @@ var reset = function () {
 $(document).ready(function () {
 	nasaBg();
 	$('#search-again').hide();
+	$('.carousel').hide();
 });
 
 ////////////////////////////////////////
@@ -165,7 +167,6 @@ var redirect_uri = "https://michaelabee.github.io/Cool-Space-Pix/";
 var scopes = "playlist-read-private";
 var response_type = token;
 var spotifyUri = "spotify:user:123639550:playlist:7lYSJe9bqzeYYmzqIhSESB";
-
 
 $.ajax({
 	url: playlistUrl,
@@ -230,5 +231,4 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
 	// Connect to the player!
 	player.connect();
-
 };

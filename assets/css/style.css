@@ -1,11 +1,3 @@
-/*Colors:
-#104F55
-#32746D
-#9EC5AB
-#01200F
-#011502
-*/
-
 html {
 	background-color: #000;
 	color: #fff;
@@ -69,6 +61,7 @@ h1 {
 	height: 90px;
 	z-index: 1000;
 	-webkit-font-smoothing: antialiased;
+	opacity: 100%;
  }
 
 .input-field input[type=text]:focus {

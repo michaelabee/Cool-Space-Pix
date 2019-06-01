@@ -28,6 +28,7 @@ var nasaBg = function () {
 ////////// QUERY FUNCTIONS TO COLLECT USER INPUT /////////////
 //////////////////////////////////////////////////////////////
 
+// Keyword search
 var getSearchTerm = function () {
 	if ($('#search-term').val().trim() === '') {
 		searchTerm = ''
@@ -36,6 +37,7 @@ var getSearchTerm = function () {
 	};
 };
 
+// Start year
 var getYearStart = function () {
 	if ($('#search-start-date').val().trim() === '') {
 		yearStart = '';
@@ -44,6 +46,7 @@ var getYearStart = function () {
 	};
 };
 
+// End year
 var getYearEnd = function () {
 	if ($('#search-end-date').val().trim() === '') {
 		yearEnd = '';
@@ -52,6 +55,7 @@ var getYearEnd = function () {
 	};
 };
 
+// Number of results, which doesn't actually go into the query URL; but the resultsQty variable is used to put the number of results in the Carousel.
 var getResultsQty = function () {
 	if ($('#resultsQty').val().trim() === '') {
 		resultsQty = 10
@@ -66,11 +70,13 @@ var getResultsQty = function () {
 
 var nasaImagesQuery = function () {
 
+	// Grabbing the results from the functions above
 	getSearchTerm();
 	getYearStart();
 	getYearEnd();
 	getResultsQty();
 
+	// If the search term and year boxes are empty, stop the query and return an error message.
 	if (searchTerm === '' && yearStart === '' && yearEnd === '') {
 		$('#errorMessage').show();
 		return;
@@ -78,10 +84,13 @@ var nasaImagesQuery = function () {
 		$('#errorMessage').hide();
 	};
 
+	// Just console logging the query values for reference and potential debugging
 	console.log('Query values: ' + searchTerm + ', ' + $('#search-start-date').val().trim() + '-' + $('#search-end-date').val().trim() + '; ' + resultsQty + ' results desired');
 
+	// Building the query URL
 	nasaQueryURL = 'https://images-api.nasa.gov/search?q=' + searchTerm + yearStart + yearEnd;
 
+	// Finally the NASA ajax query
 	$.ajax({
 		url: nasaQueryURL,
 		method: "GET"
@@ -89,35 +98,31 @@ var nasaImagesQuery = function () {
 		console.log('====== IMG QUERY RESPONSE ======');
 		console.log(response);
 		resultsArr = response.collection.items;
-		for (i = 0; i < resultsQty; i++) {
-			var resBox = $('<div>');
-
-			resBox.attr('class', 'carousel');
-			var link = $('<a>');
-			link.attr({
+		// Here's where that resultsQty variable comes back, to run this loop.
+		for (i = 0; i < resultsQty; i++) { 
+			var link = $('<a>'); // A new link tag per result
+			link.attr({ // Assigning some needed classes for the carousel
 				'class': 'carousel-item',
 				'href': '#' + [i] + '!',
 			});
 
-			var resImg = $('<img>');
-
-			resImg.attr({
-				'class': 'resImg',
+			var resImg = $('<img>'); // Now creating an image tag for each of the images
+			resImg.attr({ // Now setting up the image attributes
 				'class': 'materialboxed',
-				'src': resultsArr[i].links[0].href, // Just the thumbnail
-				// Also add an actual link to it for full size
-				'title': resultsArr[i].data[0].title,
-				'data-caption': resultsArr[i].data[0].description,
+				'width': '150%',
+				'src': resultsArr[i].links[0].href, // The image itself
+				'title': resultsArr[i].data[0].title, // Mouseover title
+				'data-caption': resultsArr[i].data[0].description, // Description for below the image
 			});
 
-			link.append(resImg);
+			link.append(resImg); // Pushing the image into the link tag...
 			
-			$("#carousel").append(link);
+			$(".carousel").append(link); // ...then putting the link tag into the carousel itself.
 
-			$('.carousel').carousel({
+			$('.carousel').carousel({ // And finally setting the carousel up.
 				full_width: true
 			});
-			$('.materialboxed').materialbox();
+			$('.materialboxed').materialbox(); // Applying method to the resImg image tags; needed for the click-and-zoom capability of the pictures.
 			$('#searchQuery').hide();
 			$('#search-again').show();
 			$('.carousel').show();

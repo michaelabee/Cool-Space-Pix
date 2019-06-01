@@ -31,18 +31,10 @@ h1 {
 	margin: 20px 0;
 }
 
-.resBox {
-	display: inline-block;
-	margin-right: 8px;
-	max-width: 22%;
-	max-height: 200px;
-}
-
 .navbar {
 	padding: 1px;
 	background: #0B0523;
 	margin-top: 5px;
-
 }
 
 .btn {
@@ -54,7 +46,12 @@ h1 {
 }
 
 .carousel {
-	min-height: 500px;
+	/* min-height: 500px; */
+	z-index: 5;
+}
+
+.footer {
+	z-index: 10;
 }
 
 .input-field input[type=text]:focus {
@@ -110,13 +107,8 @@ h1 {
 	color: white;
 }
 
-#search-again {
-	position: absolute;
-}
-
 #video-holder {
 	text-align:center;
 	padding:1px;
 	margin-top:50px;
-
 }

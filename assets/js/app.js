@@ -147,7 +147,7 @@ $(document).ready(function () {
 	nasaBg();
 	$('#search-again').hide();
 
-};
+});
 
 ////////////////////////////////////////
 ///////////// SPOTIFY API //////////////

@@ -110,22 +110,19 @@ var nasaImagesQuery = function () {
 				'data-caption': resultsArr[i].data[0].description,
 			});
 
-			// resBox.wrap('<a href=' + results.Arr[i].href + '></a>')
-
 			link.append(resImg);
 			
 			$("#carousel").append(link);
 
-			// resBox.append(resImg);
-			// resBox.append(resultsArr[i].data[0].title);
 			$('.carousel').carousel({
 				full_width: true
 			});
 			$('.materialboxed').materialbox();
 			$('#searchQuery').hide();
 			$('#search-again').show();
+			$('.carousel').show();
 		};
-		$('.carousel').show();
+		
 	});
 };
 
@@ -137,6 +134,7 @@ var reset = function () {
 	$('#search-again').hide();
 	$('data-caption').empty();
 	$('data-input').empty();
+	$('.carousel').empty();
 };
 
 ////////////////////////////////////////

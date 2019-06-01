@@ -109,7 +109,7 @@ var nasaImagesQuery = function () {
 			var resImg = $('<img>'); // Now creating an image tag for each of the images
 			resImg.attr({ // Now setting up the image attributes
 				'class': 'materialboxed',
-				'width': '150%',
+				'width': '140%',
 				'src': resultsArr[i].links[0].href, // The image itself
 				'title': resultsArr[i].data[0].title, // Mouseover title
 				'data-caption': resultsArr[i].data[0].description, // Description for below the image

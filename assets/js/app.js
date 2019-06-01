@@ -124,7 +124,7 @@ var nasaImagesQuery = function () {
 			});
 			$('.materialboxed').materialbox(); // Applying method to the resImg image tags; needed for the click-and-zoom capability of the pictures.
 			$('#searchQuery').hide(); // Hiding the query form while the results are showing
-			$('#search-again').show(); // And showing the search reset button
+			$('.search-again').show(); // And showing the search reset button
 			$('.carousel').show(); // Showing the carousel results
 		};
 	});
@@ -138,7 +138,7 @@ var reset = function () {
 	$('#searchQuery').show(); // Re-show the search query
 	$('.carousel').empty(); // Empty carousel
 	$('.carousel').hide(); // Hide carousel
-	$('#search-again').hide(); // Hide the search again button
+	$('.search-again').hide(); // Hide the search again button
 	$('data-caption').empty(); // Emptying the caption from carousel images
 	$('.data-input').attr('value',''); // Emptying the form's search criteria
 };
@@ -149,8 +149,9 @@ var reset = function () {
 
 $(document).ready(function () {
 	nasaBg();
-	$('#search-again').hide();
+	$('.search-again').hide();
 	$('.carousel').hide();
+	$('.sidenav').sidenav();
 });
 
 ////////////////////////////////////////

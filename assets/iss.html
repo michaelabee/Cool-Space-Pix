@@ -27,7 +27,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       
     <!-- Local JS -->
-    <script src="assets/js/app.js"></script>
+    <script src="js/app.js"></script>
       
     <!-- Spotify API JS -->
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
@@ -40,16 +40,33 @@
   <body>
     <div id="bgDiv"></div>
     <div id="mainContent">
-      <div class="container">
-        <nav class="navbar">
-          <div class="nav-wrapper">
-            <a href="../index.html" id="title">E l l i p s e </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <a href="iss.html"> ISS Livestream </a>
+            <nav class="navbar">
+                    <div class="nav-wrapper">
               
-            </ul>
-          </div>
-        </nav>
+                      <a href="../index.html" id="title">E l l i p s e</a>
+              
+                      <ul class="right hide-on-med-and-down">
+                        <li><a href="iss.html">ISS Livestream</a></li>
+                        <li><a href="https://apod.nasa.gov" target='_blank'>Like the background image?</a></li>
+                        <li class="search-again"><a href="#" onclick='reset()'>New search</a></li>
+                      </ul>
+              
+                      <script>
+                        $(".button-collapse").sideNav();
+                      </script>
+              
+                      <ul class="sidenav" id='mobile-demo'>
+                        <li><a href="iss.html">ISS Livestream</a></li>
+                        <li><a href="https://apod.nasa.gov" target='_blank'>Like the background image?</a></li>
+                        <li class="search-again"><a href="#" onclick='reset()'>New search</a></li>
+                      </ul>
+              
+                      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">&#9776;</i></a>
+              
+                    </div>
+                  </nav>
+              
+    <div class="container">
 
     <div class="row">
             <div class="col s2"></div>

@@ -153,6 +153,7 @@ $(document).ready(function () {
 var userId = "Ker Her";
 var spotifyId = "7lYSJe9bqzeYYmzqIhSESB";
 var playlistUrl = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + spotifyId + "";
+// need to update token code //
 var token = "Bearer BQBU7pHW_4WDuNSzHu81AQQlShMYV86rWFoQs1wr3tFDBrmZhkz87H5xIX9_jdauwbjha3ofzL_2W1vLmctAVtgSnhNBmhD4r72VoUfQcnrz8IcYUPuL5JRHrnJMvpJX79Iak6MbdpP1iaUHHqzzZ_RIN2Bp6wg";
 var client_id = "dd3e63a1c5c048f789e22cfd38d228e8";
 var secret_id = "8705f5b4d85b4cd0bd05ec6322a7782b";
@@ -174,6 +175,7 @@ $.ajax({
 window.onSpotifyWebPlaybackSDKReady = () => {
 
 	console.log("onSpotifyWebPlaybackSDKReady triggered")
+	// need to update refresh token //
 	const token = 'BQCFk1inlUMM5TvatWBSMeSRvUbL1o8gpCcM_nTeA5j30fYSUAknsXd67xABxgc9LJWVnZTiVl9OjLbcSVNDP8_T6kpOZ510Y9iww4TknWUHpxdLao1PyrcOXLTuTkEswL9JZRDyymP38pRztKbshdwFFhxJFcHrh5ImWiwa';
 	const player = new Spotify.Player({
 		name: 'Web Playback SDK Quick Start Player',

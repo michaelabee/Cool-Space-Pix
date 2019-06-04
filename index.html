@@ -31,7 +31,7 @@
   <!-- Spotify API JS -->
   <script src="https://sdk.scdn.co/spotify-player.js"></script>
 
-  <!-- add a favicon -->
+  <!-- Add a favicon -->
   <link rel="icon" type="image/png" href="assets/images/favicon.ico">
 
 
@@ -41,15 +41,34 @@
   <!-- bgDiv is for the background image, from the image of the day NASA API -->
   <div id="bgDiv"></div>
   <div id="mainContent">
+
+    <nav class="navbar">
+      <div class="nav-wrapper">
+
+        <a href="index.html" id="title">E l l i p s e</a>
+
+        <ul class="right hide-on-med-and-down">
+          <li class="search-again"><a href="#" onclick='reset()'>New Search</a></li>
+          <li><a href="assets/iss.html">ISS Livestream</a></li>
+          <li><a href="https://apod.nasa.gov" target='_blank'>Like the background image?</a></li>
+        </ul>
+
+        <script>
+          $(".button-collapse").sideNav();
+        </script>
+
+        <ul class="sidenav" id='mobile-demo'>
+          <li><a href="assets/iss.html">ISS Livestream</a></li>
+          <li><a href="https://apod.nasa.gov" target='_blank'>Like the background image?</a></li>
+          <li class="search-again"><a href="#" onclick='reset()'>New Search</a></li>
+        </ul>
+
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">&#9776;</i></a>
+
+      </div>
+    </nav>
+
     <div class="container">
-      <nav class="navbar">
-        <div class="nav-wrapper">
-          <a href="index.html" id="title">E l l i p s e</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <a href="assets/iss.html">ISS Livestream</a>
-          </ul>
-        </div>
-      </nav>
 
       <!-- Main form for search query -->
       <div class="row">
@@ -78,14 +97,14 @@
       </div>
 
       <!-- Search reset button -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="col s12">
           <div class="center-align" id="search-again-holder">
             <button class="btn waves-effect waves-light" id="search-again" onclick="reset()" type="submit"
               name="action">Search Again</button>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Search result images go here -->
       <div class="row">

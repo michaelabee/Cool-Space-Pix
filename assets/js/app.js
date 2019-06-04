@@ -28,6 +28,7 @@ var nasaBg = function () {
 ////////// QUERY FUNCTIONS TO COLLECT USER INPUT /////////////
 //////////////////////////////////////////////////////////////
 
+// Keyword search
 var getSearchTerm = function () {
 	if ($('#search-term').val().trim() === '') {
 		searchTerm = ''
@@ -36,6 +37,7 @@ var getSearchTerm = function () {
 	};
 };
 
+// Start year; if the form is empy then return no portion of the parameter
 var getYearStart = function () {
 	if ($('#search-start-date').val().trim() === '') {
 		yearStart = '';
@@ -44,6 +46,7 @@ var getYearStart = function () {
 	};
 };
 
+// End year; same behavior as the start year
 var getYearEnd = function () {
 	if ($('#search-end-date').val().trim() === '') {
 		yearEnd = '';
@@ -52,6 +55,7 @@ var getYearEnd = function () {
 	};
 };
 
+// Number of results, which doesn't actually go into the query URL; but the resultsQty variable is used to put the number of results in the Carousel.
 var getResultsQty = function () {
 	if ($('#resultsQty').val().trim() === '') {
 		resultsQty = 10
@@ -66,11 +70,13 @@ var getResultsQty = function () {
 
 var nasaImagesQuery = function () {
 
+	// Grabbing the results from the functions above
 	getSearchTerm();
 	getYearStart();
 	getYearEnd();
 	getResultsQty();
 
+	// If the search term and year boxes are empty, stop the query and return an error message.
 	if (searchTerm === '' && yearStart === '' && yearEnd === '') {
 		$('#errorMessage').show();
 		return;
@@ -78,10 +84,13 @@ var nasaImagesQuery = function () {
 		$('#errorMessage').hide();
 	};
 
+	// Just console logging the query values for reference and potential debugging
 	console.log('Query values: ' + searchTerm + ', ' + $('#search-start-date').val().trim() + '-' + $('#search-end-date').val().trim() + '; ' + resultsQty + ' results desired');
 
+	// Building the query URL
 	nasaQueryURL = 'https://images-api.nasa.gov/search?q=' + searchTerm + yearStart + yearEnd;
 
+	// Finally the NASA ajax query
 	$.ajax({
 		url: nasaQueryURL,
 		method: "GET"
@@ -89,52 +98,49 @@ var nasaImagesQuery = function () {
 		console.log('====== IMG QUERY RESPONSE ======');
 		console.log(response);
 		resultsArr = response.collection.items;
-		for (i = 0; i < resultsQty; i++) {
-			var resBox = $('<div>');
-
-			resBox.attr('class', 'carousel');
-			var link = $('<a>');
-			link.attr({
+		// Here's where that resultsQty variable comes back, to run this loop.
+		for (i = 0; i < resultsQty; i++) { 
+			var link = $('<a>'); // A new link tag per result
+			link.attr({ // Assigning some needed classes for the carousel
 				'class': 'carousel-item',
 				'href': '#' + [i] + '!',
 			});
 
-			var resImg = $('<img>');
-
-			resImg.attr({
-				'class': 'resImg',
+			var resImg = $('<img>'); // Now creating an image tag for each of the images
+			resImg.attr({ // Now setting up the image attributes
 				'class': 'materialboxed',
-				'src': resultsArr[i].links[0].href, // Just the thumbnail
-				// Also add an actual link to it for full size
-				'title': resultsArr[i].data[0].title,
-				'data-caption': resultsArr[i].data[0].description,
+				'width': '120%',
+				'src': resultsArr[i].links[0].href, // The image itself
+				'title': resultsArr[i].data[0].title, // Mouseover title
+				'data-caption': resultsArr[i].data[0].description, // Description for below the image
 			});
 
-			link.append(resImg);
+			link.append(resImg); // Pushing the image into the link tag...
 			
-			$("#carousel").append(link);
+			$(".carousel").append(link); // ...then putting the link tag into the carousel itself.
 
-			$('.carousel').carousel({
+			$('.carousel').carousel({ // And finally setting the carousel up.
 				full_width: true
 			});
-			$('.materialboxed').materialbox();
-			$('#searchQuery').hide();
-			$('#search-again').show();
-			$('.carousel').show();
+			$('.materialboxed').materialbox(); // Applying method to the resImg image tags; needed for the click-and-zoom capability of the pictures.
+			$('#searchQuery').hide(); // Hiding the query form while the results are showing
+			$('.search-again').show(); // And showing the search reset button
+			$('.carousel').show(); // Showing the carousel results
 		};
-		
 	});
 };
 
+///////////////////////////////////////////////
 ////////// RESET PAGE FOR NEW SEARCH //////////
+///////////////////////////////////////////////
 
 var reset = function () {
-	$('#searchQuery').show();
-	$('.carousel').hide();
-	$('#search-again').hide();
-	$('data-caption').empty();
-	$('data-input').empty();
-	$('.carousel').empty();
+	$('#searchQuery').show(); // Re-show the search query
+	$('.carousel').empty(); // Empty carousel
+	$('.carousel').hide(); // Hide carousel
+	$('.search-again').hide(); // Hide the search again button
+	$('data-caption').empty(); // Emptying the caption from carousel images
+	$('.data-input').attr('value',''); // Emptying the form's search criteria
 };
 
 ////////////////////////////////////////
@@ -143,7 +149,9 @@ var reset = function () {
 
 $(document).ready(function () {
 	nasaBg();
-	$('#search-again').hide();
+	$('.search-again').hide();
+	$('.carousel').hide();
+	$('.sidenav').sidenav();
 });
 
 ////////////////////////////////////////
@@ -154,14 +162,13 @@ var userId = "Ker Her";
 var spotifyId = "7lYSJe9bqzeYYmzqIhSESB";
 var playlistUrl = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + spotifyId + "";
 // need to update token code //
-var token = "Bearer BQBU7pHW_4WDuNSzHu81AQQlShMYV86rWFoQs1wr3tFDBrmZhkz87H5xIX9_jdauwbjha3ofzL_2W1vLmctAVtgSnhNBmhD4r72VoUfQcnrz8IcYUPuL5JRHrnJMvpJX79Iak6MbdpP1iaUHHqzzZ_RIN2Bp6wg";
+var token = "Bearer BQBF0hm1pmpqSm56phhVrRAPOiHA6dCxnYL-3PWDL8RLjK2oEH7SRgTpJPW3HzX6XEB924wKl46QtLxxiBVmKtjcrsjRfT-7PJsOZ7ISD2JxlKwLdLjoTRbUoCzwrXGTxOqkO3oCIWZrXe6IZIa8fTtPb9_IqQA";
 var client_id = "dd3e63a1c5c048f789e22cfd38d228e8";
 var secret_id = "8705f5b4d85b4cd0bd05ec6322a7782b";
 var redirect_uri = "https://michaelabee.github.io/Cool-Space-Pix/";
 var scopes = "playlist-read-private";
 var response_type = token;
 var spotifyUri = "spotify:user:123639550:playlist:7lYSJe9bqzeYYmzqIhSESB";
-
 
 $.ajax({
 	url: playlistUrl,
@@ -175,8 +182,7 @@ $.ajax({
 window.onSpotifyWebPlaybackSDKReady = () => {
 
 	console.log("onSpotifyWebPlaybackSDKReady triggered")
-	// need to update refresh token //
-	const token = 'BQCFk1inlUMM5TvatWBSMeSRvUbL1o8gpCcM_nTeA5j30fYSUAknsXd67xABxgc9LJWVnZTiVl9OjLbcSVNDP8_T6kpOZ510Y9iww4TknWUHpxdLao1PyrcOXLTuTkEswL9JZRDyymP38pRztKbshdwFFhxJFcHrh5ImWiwa';
+	const token = 'BQCyyrnC3Ydi97Eo_-pmMqreOEJv4ZM5NXZpu_ZMQxC6yLdkGV5ItIx5Wwfk1tlNlsLteSjFuCHbJ0EEAexiw5b9R2_ukH2R7tSYfEg0uZHdhw5LJVJzAwen0VpsNE-F5hyGmlPGdXTopjw35gDUdgTQzLX3UcuRzb6FV_aH';
 	const player = new Spotify.Player({
 		name: 'Web Playback SDK Quick Start Player',
 		getOAuthToken: cb => {
@@ -227,5 +233,4 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
 	// Connect to the player!
 	player.connect();
-
 };

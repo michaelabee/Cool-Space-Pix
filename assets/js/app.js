@@ -161,7 +161,7 @@ $(document).ready(function () {
 var userId = "Ker Her";
 var spotifyId = "7lYSJe9bqzeYYmzqIhSESB";
 var playlistUrl = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + spotifyId + "";
-var token = "Bearer BQBU7pHW_4WDuNSzHu81AQQlShMYV86rWFoQs1wr3tFDBrmZhkz87H5xIX9_jdauwbjha3ofzL_2W1vLmctAVtgSnhNBmhD4r72VoUfQcnrz8IcYUPuL5JRHrnJMvpJX79Iak6MbdpP1iaUHHqzzZ_RIN2Bp6wg";
+var token = "Bearer BQA73s5FkS-rPT68q-5kWieTHJfbceMEH-nb_EgiJQX8XEq65yUvuPfcAMmm_hUIdCsdCezrxLEE6g-gbAMEir9lZHy9VY4HDP96L0GEMEFAPGO2YV5TrsvbEDLH-DjOAyPcJ8A1a-AqdWmMhVD_G2I2eGpYhOI";
 var client_id = "dd3e63a1c5c048f789e22cfd38d228e8";
 var secret_id = "8705f5b4d85b4cd0bd05ec6322a7782b";
 var redirect_uri = "https://michaelabee.github.io/Cool-Space-Pix/";
@@ -181,7 +181,7 @@ $.ajax({
 window.onSpotifyWebPlaybackSDKReady = () => {
 
 	console.log("onSpotifyWebPlaybackSDKReady triggered")
-	const token = 'BQCFk1inlUMM5TvatWBSMeSRvUbL1o8gpCcM_nTeA5j30fYSUAknsXd67xABxgc9LJWVnZTiVl9OjLbcSVNDP8_T6kpOZ510Y9iww4TknWUHpxdLao1PyrcOXLTuTkEswL9JZRDyymP38pRztKbshdwFFhxJFcHrh5ImWiwa';
+	const token = 'BQCyyrnC3Ydi97Eo_-pmMqreOEJv4ZM5NXZpu_ZMQxC6yLdkGV5ItIx5Wwfk1tlNlsLteSjFuCHbJ0EEAexiw5b9R2_ukH2R7tSYfEg0uZHdhw5LJVJzAwen0VpsNE-F5hyGmlPGdXTopjw35gDUdgTQzLX3UcuRzb6FV_aH';
 	const player = new Spotify.Player({
 		name: 'Web Playback SDK Quick Start Player',
 		getOAuthToken: cb => {
